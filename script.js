@@ -94,9 +94,9 @@ function dropFlower(event) {
     if (hint) hint.remove()
 
     // Stack flowers neatly
-    const existingFlowers = bouquetZone.querySelectorAll(".bouquet-flower")
-    const flowerHeight = 50 // match your image height
-    const bottomPosition = 20 + existingFlowers.length * flowerHeight
+const existingFlowers = bouquetZone.querySelectorAll(".bouquet-flower")
+const flowerHeight = 50 // approximate height of each flower in px
+const bottomPosition = 20 + existingFlowers.length * flowerHeight
 
     const flowerImg = document.createElement("img")
     flowerImg.src = draggedFlower
