@@ -25,9 +25,11 @@ function displayRandomQuote() {
   quoteDisplay.textContent = forgivenesQuotes[randomIndex]
 }
 
-// Button to show a new quote on click
+// Button to show a new quote on click (if you add one)
 const newQuoteBtn = document.getElementById("newQuoteBtn")
-newQuoteBtn.addEventListener("click", displayRandomQuote)
+if (newQuoteBtn) {
+  newQuoteBtn.addEventListener("click", displayRandomQuote)
+}
 
 // Handle answer button clicks
 function handleAnswer(answer) {
@@ -66,7 +68,7 @@ function addCompliment() {
   input.focus()
 }
 
-// Drag and drop functionality
+// Drag and drop functionality for images
 let draggedFlower = null
 
 function dragStart(event) {
@@ -91,36 +93,34 @@ function dropFlower(event) {
     const hint = bouquetZone.querySelector(".drop-hint")
     if (hint) hint.remove()
 
-    const flowerElement = document.createElement("span")
-    flowerElement.className = "bouquet-flower"
-    flowerElement.textContent = draggedFlower
-
-    // Make sure drop zone is relative
-    bouquetZone.style.position = "relative"
-
     // Stack flowers neatly
     const existingFlowers = bouquetZone.querySelectorAll(".bouquet-flower")
-    const flowerHeight = 30 // approximate height of each flower in px
+    const flowerHeight = 50 // match your image height
     const bottomPosition = 20 + existingFlowers.length * flowerHeight
 
-    flowerElement.style.position = "absolute"
-    flowerElement.style.left = "50%"
-    flowerElement.style.transform = "translateX(-50%)"
-    flowerElement.style.bottom = "150px"
-    flowerElement.style.opacity = 0
+    const flowerImg = document.createElement("img")
+    flowerImg.src = draggedFlower
+    flowerImg.className = "bouquet-flower"
+    flowerImg.style.width = "50px"
+    flowerImg.style.position = "absolute"
+    flowerImg.style.left = "50%"
+    flowerImg.style.transform = "translateX(-50%)"
+    flowerImg.style.bottom = "150px"
+    flowerImg.style.opacity = 0
 
-    bouquetZone.appendChild(flowerElement)
+    bouquetZone.style.position = "relative"
+    bouquetZone.appendChild(flowerImg)
 
     // Animate falling into stack
     setTimeout(() => {
-      flowerElement.style.transition = "all 0.8s ease-out"
-      flowerElement.style.bottom = `${bottomPosition}px`
-      flowerElement.style.opacity = 1
+      flowerImg.style.transition = "all 0.8s ease-out"
+      flowerImg.style.bottom = `${bottomPosition}px`
+      flowerImg.style.opacity = 1
     }, 50)
   }
 }
 
-
+// Clear bouquet
 function clearBouquet() {
   const bouquetZone = document.getElementById("bouquetZone")
   bouquetZone.innerHTML = '<p class="drop-hint">Drag flowers here to create your bouquet</p><div class="vase"></div>'
