@@ -371,8 +371,9 @@ body {
 
 .clear-bouquet-btn {
   display: block;
-  margin: 0 auto;
-  padding: 12px 30px;
+  margin: 20px auto 0 auto; /* add margin for spacing */
+  padding: 8px 20px;         /* smaller padding */
+  font-size: 1rem;           /* smaller font */
   background: var(--dark-accent);
   color: white;
   border: none;
@@ -386,6 +387,7 @@ body {
   transform: scale(1.05);
   box-shadow: 0 4px 15px rgba(45, 27, 61, 0.3);
 }
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
