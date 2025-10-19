@@ -93,23 +93,15 @@ function dropFlower(event) {
     const hint = bouquetZone.querySelector(".drop-hint")
     if (hint) hint.remove()
 
-    // Stack flowers neatly
-const existingFlowers = bouquetZone.querySelectorAll(".bouquet-flower")
-const flowerHeight = 50 // approximate height of each flower in px
-const bottomPosition = 20 + existingFlowers.length * flowerHeight
-
     const flowerImg = document.createElement("img")
     flowerImg.src = draggedFlower
-    flowerImg.className = "bouquet-flower"
-    flowerImg.style.width = "50px"
-    flowerImg.style.position = "absolute"
-    flowerImg.style.left = "50%"
-    flowerImg.style.transform = "translateX(-50%)"
-    flowerImg.style.bottom = "50px"
-    flowerImg.style.opacity = 0
+    flowerImg.className = "bouquet-flower-image"
+    flowerImg.style.width = "60px"   // adjust size
+    flowerImg.style.margin = "5px"
 
-    bouquetZone.style.position = "relative"
     bouquetZone.appendChild(flowerImg)
+  }
+}
 
     // Animate falling into stack
     setTimeout(() => {
