@@ -97,9 +97,23 @@ function dropFlower(event) {
     flowerElement.className = "bouquet-flower"
     flowerElement.textContent = draggedFlower
 
+    // Start position (above vase)
+    flowerElement.style.position = "absolute"
+    flowerElement.style.bottom = "150px"
+    flowerElement.style.left = `${Math.random() * (bouquetZone.offsetWidth - 30)}px`
+    flowerElement.style.opacity = 0
+
     bouquetZone.appendChild(flowerElement)
+
+    // Animate falling into the vase
+    setTimeout(() => {
+      flowerElement.style.transition = "all 0.8s ease-out"
+      flowerElement.style.bottom = "20px"
+      flowerElement.style.opacity = 1
+    }, 50)
   }
 }
+
 
 function clearBouquet() {
   const bouquetZone = document.getElementById("bouquetZone")
