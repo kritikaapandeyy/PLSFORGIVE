@@ -89,26 +89,32 @@ function dropFlower(event) {
 
     // Remove hint if this is the first flower
     const hint = bouquetZone.querySelector(".drop-hint")
-    if (hint) {
-      hint.remove()
-    }
+    if (hint) hint.remove()
 
     const flowerElement = document.createElement("span")
     flowerElement.className = "bouquet-flower"
     flowerElement.textContent = draggedFlower
 
-    // Start position (above vase)
+    // Make sure drop zone is relative
+    bouquetZone.style.position = "relative"
+
+    // Stack flowers neatly
+    const existingFlowers = bouquetZone.querySelectorAll(".bouquet-flower")
+    const flowerHeight = 30 // approximate height of each flower in px
+    const bottomPosition = 20 + existingFlowers.length * flowerHeight
+
     flowerElement.style.position = "absolute"
+    flowerElement.style.left = "50%"
+    flowerElement.style.transform = "translateX(-50%)"
     flowerElement.style.bottom = "150px"
-    flowerElement.style.left = `${Math.random() * (bouquetZone.offsetWidth - 30)}px`
     flowerElement.style.opacity = 0
 
     bouquetZone.appendChild(flowerElement)
 
-    // Animate falling into the vase
+    // Animate falling into stack
     setTimeout(() => {
       flowerElement.style.transition = "all 0.8s ease-out"
-      flowerElement.style.bottom = "20px"
+      flowerElement.style.bottom = `${bottomPosition}px`
       flowerElement.style.opacity = 1
     }, 50)
   }
