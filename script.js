@@ -105,7 +105,7 @@ const bottomPosition = 20 + existingFlowers.length * flowerHeight
     flowerImg.style.position = "absolute"
     flowerImg.style.left = "50%"
     flowerImg.style.transform = "translateX(-50%)"
-    flowerImg.style.bottom = "150px"
+    flowerImg.style.bottom = "50px"
     flowerImg.style.opacity = 0
 
     bouquetZone.style.position = "relative"
